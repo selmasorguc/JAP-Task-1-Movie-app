@@ -1,4 +1,5 @@
 import { Actor } from "./actor";
+import { Rating } from "./rating";
 
 export interface Movie {
     id: number;
@@ -6,6 +7,8 @@ export interface Movie {
     coverUrl: string;
     releaseDate: Date;
     description: string;
-    rating: number;
+    averageRating: number;
+    ratings: Rating[];
+    isMovie:boolean;
     cast: Actor[];
   }

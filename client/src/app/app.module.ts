@@ -9,22 +9,29 @@ import { HttpClientModule } from '@angular/common/http';
 import { MoviesComponent } from './movies/movies.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { RatingModule } from 'ngx-bootstrap/rating';
-import { TvshowsComponent } from './tvshows/tvshows.component';
+import { TvShowsComponent } from './tv-shows/tv-shows.component';
+import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     MoviesComponent,
     MovieCardComponent,
-    TvshowsComponent
+    TvShowsComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     TabsModule.forRoot(),
     HttpClientModule,
-    RatingModule.forRoot()
-  ],
+    RatingModule.forRoot(),
+    FormsModule,
+    RatingModule.forRoot(),
+    NgbModule],
   providers: [],
   bootstrap: [AppComponent]
 })

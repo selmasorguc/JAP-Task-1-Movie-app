@@ -8,14 +8,14 @@ import { Movie } from '../_models/movie';
 })
 export class MovieCardComponent implements OnInit {
   @Input() movie!: Movie;
-  max = 10;
-  rate = 7;
-  isReadonly = true;
+  rate = 0;
+  max = 5; 
 
   constructor() { }
 
+ 
+
   ngOnInit(): void {
-    console.log(this.movie);
   }
 
 }

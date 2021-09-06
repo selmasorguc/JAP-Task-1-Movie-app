@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace API.Entity
 {
@@ -10,7 +11,14 @@ namespace API.Entity
         public string Description { get; set; }
         public DateTime ReleaseDate { get; set; }
         public string CoverUrl { get; set; }
-        public float Rating { get; set; }
+        public IEnumerable<Rating> Ratings { get; set; }
+        public float AverageRating { get; set; }
+        public bool IsMovie { get; set; }
         public IEnumerable<Actor> Cast { get; set; }
+
+        public float GetAverageRating()
+        { 
+            return this.Ratings.Average(x => x.Value);
+        }
     }
 }

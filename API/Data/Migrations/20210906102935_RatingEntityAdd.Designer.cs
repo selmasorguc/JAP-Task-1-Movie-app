@@ -3,14 +3,16 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210906102935_RatingEntityAdd")]
+    partial class RatingEntityAdd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,10 +24,15 @@ namespace API.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("MovieId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("MovieId");
 
                     b.ToTable("Actors");
                 });
@@ -35,9 +42,6 @@ namespace API.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
-
-                    b.Property<float>("AverageRating")
-                        .HasColumnType("REAL");
 
                     b.Property<string>("CoverUrl")
                         .HasColumnType("TEXT");
@@ -78,19 +82,11 @@ namespace API.Data.Migrations
                     b.ToTable("Ratings");
                 });
 
-            modelBuilder.Entity("ActorMovie", b =>
+            modelBuilder.Entity("API.Entity.Actor", b =>
                 {
-                    b.Property<int>("CastId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("MoviesId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("CastId", "MoviesId");
-
-                    b.HasIndex("MoviesId");
-
-                    b.ToTable("ActorMovie");
+                    b.HasOne("API.Entity.Movie", null)
+                        .WithMany("Cast")
+                        .HasForeignKey("MovieId");
                 });
 
             modelBuilder.Entity("API.Entity.Rating", b =>
@@ -102,23 +98,10 @@ namespace API.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ActorMovie", b =>
-                {
-                    b.HasOne("API.Entity.Actor", null)
-                        .WithMany()
-                        .HasForeignKey("CastId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("API.Entity.Movie", null)
-                        .WithMany()
-                        .HasForeignKey("MoviesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("API.Entity.Movie", b =>
                 {
+                    b.Navigation("Cast");
+
                     b.Navigation("Ratings");
                 });
 #pragma warning restore 612, 618

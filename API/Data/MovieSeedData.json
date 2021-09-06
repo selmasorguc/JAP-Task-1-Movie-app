@@ -1,69 +1,77 @@
 [
     {
-        "Title": "The Graduate",
-        "ReleasDate": "2014-02-01T09:28:56.321-10:00",
-        "Description": "Ben has recently graduated college, with his parents now expecting great things from him. At his \"Homecoming\" party, Mrs. Robinson, the wife of his father's business partner, has Ben drive her home, which leads to an ..",
-        "CoverUrl": "http://ia.media-imdb.com/images/M/MV5BMTQ0ODc4MDk4Nl5BMl5BanBnXkFtZTcwMTEzNzgzNA@@._V1_SX300.jpg",
-        "Rating": 4.5,
-        "Cast" : [
-            {"Name" : "Ben Rifft"},
-            {"Name" : "Jon Cann"}
+        "Title": "The Shawnshak Redemption",
+        "ReleaseDate": "1994-02-12",
+        "Description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+        "CoverUrl": "https://res.cloudinary.com/selmasorguc/image/upload/v1630923401/movie%20app/The_Shawshank_Redemption_dbmhch.jpg",
+        "Ratings": [
+            {
+                "Value": 4.0
+            },
+            {
+                "Value": 5.0
+            }
+        ],
+        "IsMovie": true,
+        "Cast": [
+            {
+                "Name": "Tim Robbins"
+            },
+            {
+                "Name": "Morgan Freeman"
+            },
+            {
+                "Name": "Bob Gunton"
+            }
         ]
     },
     {
-        "Title": "The Suicide Squad",
-        "ReleasDate":"2014-02-01T09:28:56.321-10:00",
-        "Description": "Supervillains Harley Quinn, Bloodsport, Peacemaker and a collection of nutty cons at Belle Reve prison join the super-secret, super-shady Task Force X as they are dropped off at the remote, enemy-infused island of Corto Maltese.",
-        "CoverUrl": "https://upload.wikimedia.org/wikipedia/sh/5/50/Suicide_Squad_%28film%29_Poster.png",
-        "Rating": 4.7,
-        "Cast" : [
-            {"Name" : "Will Smith"},
-            {"Name" : "Margot Robbie"}
+        "Title": "The Godfather",
+        "ReleaseDate": "1972-02-12",
+        "Description": "An organized crime dynasty's aging patriarch transfers control of his clandestine empire to his reluctant son.",
+        "CoverUrl": "https://res.cloudinary.com/selmasorguc/image/upload/v1630923401/movie%20app/The_Godfather_mm8wed.jpg",
+        "Ratings": [
+            {
+                "Value": 4.0
+            },
+            {
+                "Value": 5.0
+            }
+        ],
+        "IsMovie": true,
+        "Cast": [
+            {
+                "Name": "Marlon Brando"
+            },
+            {
+                "Name": "Al Pacino"
+            },
+            {
+                "Name": "James Caan"
+            }
         ]
     },
     {
-        "Title": "Spider-Man: No Way Home",
-        "ReleasDate": "2014-02-01T09:28:56.321-10:00",
-        "Description": "For the first time in the cinematic history of Spider-Man, our friendly neighborhood hero is unmasked and no longer able to separate his normal life from the high-stakes of being a Super Hero. When he asks for help from Doctor Strange, the stakes become even more dangerous, forcing him to discover what it truly means to be Spider-Man.",
-        "CoverUrl": "https://cdn.europosters.eu/image/750/posters/spider-man-miles-morales-cybernetic-swing-i100282.jpg",
-        "Rating": 4.7,
-        "Cast" : [
-            {"Name" : "Alfred Molina"},
-            {"Name" : "Tom Holland"}
-        ]
-    },
-    {
-        "Title": "Sweet Girl",
-        "ReleasDate": "2014-02-01T09:28:56.321-10:00",
-        "Description": "Supervillains Harley Quinn, Bloodsport, Peacemaker and a collection of nutty cons at Belle Reve prison join the super-secret, super-shady Task Force X as they are dropped off at the remote, enemy-infused island of Corto Maltese.",
-        "CoverUrl": "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/movie-poster-template-design-21a1c803fe4ff4b858de24f5c91ec57f_screen.jpg?ts=1574144362",
-        "Rating": 4.7,
-        "Cast" : [
-            {"Name" : "Jason Momoa"},
-            {"Name" : "Isabela Merced"}
-        ]
-    },
-    {
-        "Title": "The Green Knight",
-        "ReleasDate": "2014-02-01T09:28:56.321-10:00",
-        "Description": "Supervillains Harley Quinn, Bloodsport, Peacemaker and a collection of nutty cons at Belle Reve prison join the super-secret, super-shady Task Force X as they are dropped off at the remote, enemy-infused island of Corto Maltese.",
-        "CoverUrl": "https://cdn.shopify.com/s/files/1/0548/8404/0870/products/TheFrightening-HorrorMoviewithKnivesandWoods_1200x.jpg?v=1623010160",
-        "Rating": 4.7,
-        "Cast" : [
-            {"Name" : "Alicia Vikander"},
-            {"Name" : "Dev Patel"}
-        ]
-    },
-    {
-        "Title": "Harry Potter",
-        "ReleasDate": "2014-02-01T09:28:56.321-10:00",
-        "Description": "Supervillains Harley Quinn, Bloodsport, Peacemaker and a collection of nutty cons at Belle Reve prison join the super-secret, super-shady Task Force X as they are dropped off at the remote, enemy-infused island of Corto Maltese.",
-        "CoverUrl": "https://images-na.ssl-images-amazon.com/images/I/91bsMwU7IzL._RI_.jpg",
-        "Rating": 4.7,
-        "Cast" : [
-            {"Name" : "Alicia Vikander"},
-            {"Name" : "Dev Patel"}
+        "Title": "Planet Earth II",
+        "ReleaseDate": "2016-02-12",
+        "Description": "Wildlife documentary series with David Attenborough, beginning with a look at the remote islands which offer sanctuary to some of the planet's rarest creatures, to the beauty of cities, which are home to humans, and animals..",
+        "CoverUrl": "https://res.cloudinary.com/selmasorguc/image/upload/v1630927126/movie%20app/Planet_Earth_II_dkpj2c.jpg",
+        "Ratings": [
+            {
+                "Value": 4.0
+            },
+            {
+                "Value": 5.0
+            }
+        ],
+        "IsMovie": false,
+        "Cast": [
+            {
+                "Name": "David Attenborough"
+            },
+            {
+                "Name": "Animals and Plants"
+            }
         ]
     }
-    
 ]

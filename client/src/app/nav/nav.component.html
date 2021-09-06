@@ -1,31 +1,21 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Movie App</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand text-success px-4" routerLink="/movies">Movie App</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
+      aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarColor02">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link active" routerLink="/movies">Home
+          <a class="nav-link active" routerLink="/movies" routerLinkActive="active">Top Rated Movies
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" routerLink="/movies">Movies
+          <a class="nav-link active" routerLink="/tvshows" routerLinkActive="active">Top Rated TV Shows
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" routerLink="/tvshows">TV Shows
-          </a>
-        </li>
-       
-        
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-sm-2" type="text" placeholder="Search">
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-      </form>
     </div>
   </div>
 </nav>

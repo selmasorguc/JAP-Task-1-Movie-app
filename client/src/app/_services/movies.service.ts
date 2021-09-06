@@ -14,4 +14,9 @@ export class MoviesService {
   getMovies() {
     return this.http.get<Movie[]>(this.baseUrl + "movies");
   }
+
+  getTVShows() {
+    return this.http.get<Movie[]>(this.baseUrl + "tvshows");
+  }
+
 }

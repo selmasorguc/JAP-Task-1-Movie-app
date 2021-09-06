@@ -3,15 +3,19 @@
         <img src="{{movie.coverUrl}}" alt="{{movie.title}}" style="width:100%">
         <div class="container">
             <h3 class="mt-2 text-warning"><b>{{movie.title}}</b></h3>
-            <h5>{{movie.releaseDate | date: 'dd MMM yyyy'}}</h5>
+            <h5>{{movie.releaseDate | date: "yyyy"}}</h5>
             <p>{{movie.description}}</p>
-            
+
             <h5 class="text-warning">Cast:</h5>
             <ul class="list-inline">
                 <li class="list-inline-item" *ngFor="let actor of movie.cast">{{actor.name}}</li>
             </ul>
             <h5 class="text-warning">Rating:</h5>
-            <p>{{movie.rating}}</p>
+            <h6>{{movie.averageRating}}</h6>
+            <rating [(ngModel)]="rate" [max]="max"></rating>
+            <div class="card">
+              <pre class="card-block card-header" style="margin:15px 0;">Rate: <b>{{rate}}</b> </pre>
+            </div>
         </div>
     </div>
 </div>
