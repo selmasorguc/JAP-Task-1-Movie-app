@@ -9,6 +9,8 @@ import { MoviesService } from '../_services/movies.service';
 })
 export class MoviesComponent implements OnInit {
   movies: Movie[] = [];
+  searchQuery: string = '';
+  search: any = {};
 
   constructor(private moviesService: MoviesService) { }
 
@@ -17,5 +19,8 @@ export class MoviesComponent implements OnInit {
       this.movies = response;
     }, error => { console.log(error); });
   }
+  searchMovies(query: string)
+  {
 
+  }
 }

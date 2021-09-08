@@ -16,9 +16,10 @@ namespace API.Entity
         public bool IsMovie { get; set; }
         public IEnumerable<Actor> Cast { get; set; }
 
-        public float GetAverageRating()
+        public double GetAverageRating()
         { 
-            return this.Ratings.Average(x => x.Value);
+            var ratingAvg = this.Ratings.Average(x => x.Value);
+            return Math.Round(ratingAvg, 1);
         }
     }
 }

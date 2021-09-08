@@ -73,5 +73,265 @@
                 "Name": "Animals and Plants"
             }
         ]
+    },
+    {
+        "Title": "The Dark Knight",
+        "ReleaseDate": "2008-02-12",
+        "Description": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+        "CoverUrl": "https://res.cloudinary.com/selmasorguc/image/upload/v1631005694/movie%20app/The_Dark_Knight_uamytn.jpg",
+        "Ratings": [
+            {
+                "Value": 4.7
+            },
+            {
+                "Value": 5.0
+            }
+        ],
+        "IsMovie": true,
+        "Cast": [
+            {
+                "Name": "Christian Bale"
+            },
+            {
+                "Name": "Heath Ledger"
+            },
+            {
+                "Name": "Aaron Eckhar"
+            }
+        ]
+    },
+    {
+        "Title": "Angry Men",
+        "ReleaseDate": "1957-02-12",
+        "Description": "A jury holdout attempts to prevent a miscarriage of justice by forcing his colleagues to reconsider the evidence.",
+        "CoverUrl": "https://res.cloudinary.com/selmasorguc/image/upload/v1631005691/movie%20app/Angry_Men_sbnhiz.jpg",
+        "Ratings": [
+            {
+                "Value": 4.5
+            },
+            {
+                "Value": 4.7
+            }
+        ],
+        "IsMovie": true,
+        "Cast": [
+            {
+                "Name": "Henry Fonda"
+            },
+            {
+                "Name": "Lee J. Cobb"
+            },
+            {
+                "Name": "Martin Balsam"
+            }
+        ]
+    },
+    {
+        "Title": "The Lord of the Rings: The Return of the King",
+        "ReleaseDate": "2003-02-12",
+        "Description": "Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.",
+        "CoverUrl": "https://res.cloudinary.com/selmasorguc/image/upload/v1631005691/movie%20app/Lord_of_the_rings_ef9rxb.jpg ",
+        "Ratings": [
+            {
+                "Value": 4.6
+            },
+            {
+                "Value": 4.7
+            }
+        ],
+        "IsMovie": true,
+        "Cast": [
+            {
+                "Name": "Elijah Wood"
+            },
+            {
+                "Name": "Viggo Mortensen"
+            },
+            {
+                "Name": "Ian McKellen"
+            }
+        ]
+    },
+    {
+        "Title": "Pulp Fiction",
+        "ReleaseDate": "1994-02-12",
+        "Description": "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+        "CoverUrl": "https://res.cloudinary.com/selmasorguc/image/upload/v1631005691/movie%20app/Pulp_Fiction_zz7cst.jpg",
+        "Ratings": [
+            {
+                "Value": 4.8
+            },
+            {
+                "Value": 4.2
+            }
+        ],
+        "IsMovie": true,
+        "Cast": [
+            {
+                "Name": "John Travolta"
+            },
+            {
+                "Name": "Uma Thurman"
+            },
+            {
+                "Name": "Samuel L. Jackson"
+            }
+        ]
+    },
+    {
+        "Title": "Fight Club",
+        "ReleaseDate": "1999-02-12",
+        "Description": "An insomniac office worker and a devil-may-care soap maker form an underground fight club that evolves into much more.",
+        "CoverUrl": "https://res.cloudinary.com/selmasorguc/image/upload/v1631005691/movie%20app/Fight_Club_zjpp45.jpg",
+        "Ratings": [
+            {
+                "Value": 4.9
+            },
+            {
+                "Value": 4.2
+            }
+        ],
+        "IsMovie": true,
+        "Cast": [
+            {
+                "Name": "Brad Pitt"
+            },
+            {
+                "Name": "Edward Northon"
+            },
+            {
+                "Name": "Meat Loaf"
+            }
+        ]
+    },
+    {
+        "Title": "Breaking Bad",
+        "ReleaseDate": "2008-02-12",
+        "Description": "A high school chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine in order to secure his family's future.",
+        "CoverUrl": "https://res.cloudinary.com/selmasorguc/image/upload/v1631006602/movie%20app/BreakingBad_nmckyj.jpg",
+        "Ratings": [
+            {
+                "Value": 5.0
+            },
+            {
+                "Value": 5.0
+            }
+        ],
+        "IsMovie": false,
+        "Cast": [
+            {
+                "Name": "Bryan Cranston"
+            },
+            {
+                "Name": "Aaron Paul"
+            },
+            {
+                "Name": "Anna Gunn"
+            }
+        ]
+    },
+    {
+        "Title": "Band of Brothers",
+        "ReleaseDate": "2001-02-12",
+        "Description": "The story of Easy Company of the U.S. Army 101st Airborne Division and their mission in World War II Europe, from Operation Overlord to V-J Day.",
+        "CoverUrl": "https://res.cloudinary.com/selmasorguc/image/upload/v1631008522/movie%20app/Band_of_Brothers_ngdhje.jpg",
+        "Ratings": [
+            {
+                "Value": 3.7
+            },
+            {
+                "Value": 5.0
+            }
+        ],
+        "IsMovie": false,
+        "Cast": [
+            {
+                "Name": "Scott Grimes"
+            },
+            {
+                "Name": "Damian Lewis"
+            },
+            {
+                "Name": "Ron Livingston"
+            }
+        ]
+    },
+    {
+        "Title": "Chernobyl",
+        "ReleaseDate": "2019-02-12",
+        "Description": "In April 1986, an explosion at the Chernobyl nuclear power plant in the Union of Soviet Socialist Republics becomes one of the world's worst man-made catastrophes.",
+        "CoverUrl": "https://res.cloudinary.com/selmasorguc/image/upload/v1631009089/movie%20app/Chernobyl_nx7mlh.jpg",
+        "Ratings": [
+            {
+                "Value": 3.7
+            },
+            {
+                "Value": 5.0
+            }
+        ],
+        "IsMovie": false,
+        "Cast": [
+            {
+                "Name": "Jessie Buckley"
+            },
+            {
+                "Name": "Jared Harris"
+            },
+            {
+                "Name": "Stellan Skarsgard"
+            }
+        ]
+    },
+    {
+        "Title": "The Wire",
+        "ReleaseDate": "2002-02-12",
+        "Description": "The Baltimore drug scene, as seen through the eyes of drug dealers and law enforcement.",
+        "CoverUrl": "https://res.cloudinary.com/selmasorguc/image/upload/v1631009089/movie%20app/The_wire_r2glsi.jpg",
+        "Ratings": [
+            {
+                "Value": 3.7
+            },
+            {
+                "Value": 5.0
+            }
+        ],
+        "IsMovie": false,
+        "Cast": [
+            {
+                "Name": "Dominic West"
+            },
+            {
+                "Name": "Lance Reddick"
+            },
+            {
+                "Name": "Sonja Sohn"
+            }
+        ]
+    },
+    {
+        "Title": "AvatarL The Last AirBender",
+        "ReleaseDate": "2005-02-12",
+        "Description": "In a war-torn world of elemental magic, a young boy reawakens to undertake a dangerous mystic quest to fulfill his destiny as the Avatar, and bring peace to the world.",
+        "CoverUrl": "https://res.cloudinary.com/selmasorguc/image/upload/v1631009089/movie%20app/Avatar_The_Last_Airbender_yny8wt.jpg",
+        "Ratings": [
+            {
+                "Value": 3.7
+            },
+            {
+                "Value": 5.0
+            }
+        ],
+        "IsMovie": false,
+        "Cast": [
+            {
+                "Name": "Dee Bradley Baker"
+            },
+            {
+                "Name": "Zach Tyler"
+            },
+            {
+                "Name": "Mae Whitman"
+            }
+        ]
     }
 ]

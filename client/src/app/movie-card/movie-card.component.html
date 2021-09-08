@@ -1,21 +1,30 @@
-<div class="card">
-    <div class="mb-2">
-        <img src="{{movie.coverUrl}}" alt="{{movie.title}}" style="width:100%">
-        <div class="container">
-            <h3 class="mt-2 text-warning"><b>{{movie.title}}</b></h3>
-            <h5>{{movie.releaseDate | date: "yyyy"}}</h5>
-            <p>{{movie.description}}</p>
+<div id="container">
 
-            <h5 class="text-warning">Cast:</h5>
-            <ul class="list-inline">
-                <li class="list-inline-item" *ngFor="let actor of movie.cast">{{actor.name}}</li>
-            </ul>
-            <h5 class="text-warning">Rating:</h5>
-            <h6>{{movie.averageRating}}</h6>
-            <rating [(ngModel)]="rate" [max]="max"></rating>
-            <div class="card">
-              <pre class="card-block card-header" style="margin:15px 0;">Rate: <b>{{rate}}</b> </pre>
-            </div>
+    <div class="product-details">
+
+        <h1>{{movie.title}}</h1>
+
+        <h4>{{movie.releaseDate | date: "yyyy"}}</h4>
+        <rating class="rating-stars" [(ngModel)]="rate" [max]="max" [readonly]="isReadonly"
+            (click)="getRating($event)"></rating>
+        <hr>
+
+        <h5>Cast</h5>
+        <ul class="list-inline">
+            <li class="list-inline-item" *ngFor="let actor of movie.cast">{{actor.name}}</li>
+        </ul>
+        <h5>Rating</h5>
+        <h6>{{movie.averageRating}}</h6>
+
+    </div>
+
+    <div class="product-image">
+        <img src="{{movie.coverUrl}}" alt="{{movie.title}}">
+        <div class="info">
+            <h4 class="mt-5">About</h4>
+            <h5 class="text-uppercase text-center px-3">{{movie.title}}</h5>
+            <p class="text-center">{{movie.description}}</p>
         </div>
     </div>
+
 </div>

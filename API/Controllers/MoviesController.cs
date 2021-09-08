@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using API.Data;
 using API.DTOs;
 using API.Entity;
+using API.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -15,46 +16,35 @@ namespace API.Controllers
     public class MoviesController : ControllerBase
     {
 
-        private readonly IMapper _mapper;
+        private readonly IMovieRepository _movieRepository;
 
-        private readonly DataContext _context;
-        public MoviesController(DataContext context, IMapper mapper)
+        public MoviesController(IMovieRepository movieRepository)
         {
-            _context = context;
-            _mapper = mapper;
+            _movieRepository = movieRepository;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MovieDto>>> GetMovies()
         {
-            var movies = await _context.Movies
-            .Include(m => m.Cast).AsSplitQuery()
-            .Include(m => m.Ratings)
-            .Where(m => m.IsMovie == true)
-            .OrderByDescending(x => x.Ratings.Select(x => x.Value).Average())
-            .ToListAsync();
-            var moviesDto = _mapper.Map<IEnumerable<MovieDto>>(movies).ToList();
-            return moviesDto;
+            return Ok(await _movieRepository.GetMoviesAsync());
         }
 
         [HttpGet("/tvshows")]
         public async Task<ActionResult<IEnumerable<MovieDto>>> GetTVShows()
         {
-            var tvshows = await _context.Movies.Include(m => m.Cast)
-            .Include(m => m.Ratings).AsSplitQuery()
-            .Where(m => m.IsMovie == false)
-            .OrderByDescending(x => x.Ratings.Select(x => x.Value).Average())
-            .ToListAsync();
-            var tvshowsDto = _mapper.Map<IEnumerable<MovieDto>>(tvshows).ToList();
-
-            return tvshowsDto;
+            return Ok(await _movieRepository.GetTVShowsAsync());
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Movie>> GetMovieById(int id)
+        public async Task<ActionResult<IEnumerable<MovieDto>>> GetMovieById(int id)
         {
-            var movie = await _context.Movies.FindAsync(id);
-            return movie;
+            return Ok(await _movieRepository.GetMovieByIdAsync(id));
+        }
+
+        [HttpGet("search/movies")]
+        public async Task<ActionResult<IEnumerable<MovieDto>>> SearchMoviesAsync(string query)
+        {
+            return Ok(await _movieRepository.SearchMoviesAsync(query));
         }
     }
 

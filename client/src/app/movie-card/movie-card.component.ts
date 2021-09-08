@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Movie } from '../_models/movie';
+import { Rating } from '../_models/rating';
+import { MoviesService } from '../_services/movies.service';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-movie-card',
@@ -9,11 +12,31 @@ import { Movie } from '../_models/movie';
 export class MovieCardComponent implements OnInit {
   @Input() movie!: Movie;
   rate = 0;
-  max = 5; 
+  max = 5;
+  isReadonly = false;
 
-  constructor() { }
+  constructor(private moviesService: MoviesService, private toastr: ToastrService) {
+  }
 
- 
+  getRating($event: any) {
+    var newRating: Rating = { value: this.rate, movieId: this.movie.id };
+    this.movie.ratings.push(newRating);
+    var newAvg: any;
+    this.moviesService.addRating(newRating).subscribe(
+      response => {
+        console.log(response);
+        this.movie.averageRating = response;
+        this.toastr.success(
+          'Thank you for leaving a rating', '',
+          {
+            positionClass: 'toast-top-center',
+            tapToDismiss: true,
+            closeButton: true
+          });
+      }
+    );
+
+  }
 
   ngOnInit(): void {
   }
