@@ -9,6 +9,8 @@ import { MoviesComponent } from './movies/movies.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { TvShowsComponent } from './tv-shows/tv-shows.component';
 import { SharedModule } from './_modules/shared.module';
+import { MediaComponent } from './media/media.component';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 
 @NgModule({
@@ -17,13 +19,15 @@ import { SharedModule } from './_modules/shared.module';
     NavComponent,
     MoviesComponent,
     MovieCardComponent,
-    TvShowsComponent
+    TvShowsComponent,
+    MediaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    TabsModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

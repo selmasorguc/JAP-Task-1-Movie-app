@@ -1,4 +1,5 @@
 body {
+  min-height: 100vh;
   background-image: linear-gradient(
     to right top,
     #200614,
@@ -14,4 +15,12 @@ body {
     #319199,
     #398984
   );
+}
+.nav-tabs{
+  border-bottom: 1px;
+}
+
+.nav-tabs .nav-link
+{
+    background-color: #5ba4d5 ;
 }

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Movie } from '../_models/movie';
 import { Rating } from '../_models/rating';
@@ -8,13 +8,22 @@ import { Rating } from '../_models/rating';
   providedIn: 'root'
 })
 export class MoviesService {
-  movies: any;
   baseUrl: string = "https://localhost:5001/";
+  movies: any;
 
   constructor(private http: HttpClient) { }
 
   getMovies() {
     return this.http.get<Movie[]>(this.baseUrl + "movies");
+  }
+
+  getPagedMovies(page: number, itemsPerPage: number) {
+    let params = new HttpParams();
+    if (page !== null && itemsPerPage !== null) {
+      params = params.append('pageNumber', page.toString());
+      params = params.append('pageSize', itemsPerPage.toString());
+    }
+    return this.http.get<Movie[]>(this.baseUrl + "movies/paged", {params: params});
   }
 
   getTVShows() {

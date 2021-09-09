@@ -19,8 +19,7 @@ export class MoviesComponent implements OnInit {
       this.movies = response;
     }, error => { console.log(error); });
   }
-  searchMovies(query: string)
-  {
+  searchMovies(query: string) {
 
   }
 }

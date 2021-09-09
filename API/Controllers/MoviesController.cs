@@ -1,9 +1,12 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Data;
 using API.DTOs;
 using API.Entity;
+using API.Extensions;
+using API.Helpers;
 using API.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -29,6 +32,9 @@ namespace API.Controllers
             return Ok(await _movieRepository.GetMoviesAsync());
         }
 
+
+
+
         [HttpGet("/tvshows")]
         public async Task<ActionResult<IEnumerable<MovieDto>>> GetTVShows()
         {
@@ -46,6 +52,17 @@ namespace API.Controllers
         {
             return Ok(await _movieRepository.SearchMoviesAsync(query));
         }
+
+
+        [HttpGet("paged")]
+        public async Task<ActionResult<IEnumerable<MovieDto>>> GetMoviesPaged([FromQuery] MovieParams movieParams)
+        {
+            var movies = await _movieRepository.GetPaged(movieParams);
+            return Ok(movies);
+        }
+
+
+
     }
 
 }

@@ -3,8 +3,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using API.DTOs;
 using API.Entity;
+using API.Helpers;
 using API.Interfaces;
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
@@ -26,9 +28,28 @@ namespace API.Data
             .Where(m => m.IsMovie == true)
             .OrderByDescending(x => x.Ratings.Select(x => x.Value).Average())
             .ToListAsync();
-            var moviesDto = _mapper.Map<IEnumerable<MovieDto>>(movies).ToList();
+            var moviesDto = _mapper.Map<IEnumerable<MovieDto>>(movies);
             return moviesDto;
+
         }
+
+        public async Task<IEnumerable<MovieDto>> GetPaged(MovieParams movieParams)
+        {
+
+            var movies = await _context.Movies
+            .Include(m => m.Cast).AsSplitQuery()
+            .Include(m => m.Ratings)
+            .Where(m => m.IsMovie == true)
+            .OrderByDescending(x => x.Ratings.Select(x => x.Value).Average())
+            .Skip((movieParams.PageNumber - 1) * movieParams.PageSize)
+            .Take(movieParams.PageSize)
+            .ToListAsync();
+            var moviesDto = _mapper.Map<IEnumerable<MovieDto>>(movies);
+            return moviesDto;
+
+
+        }
+
 
         public async Task<MovieDto> GetMovieByIdAsync(int id)
         {
@@ -79,5 +100,7 @@ namespace API.Data
             var moviesDto = _mapper.Map<IEnumerable<MovieDto>>(movies).ToList();
             return moviesDto;
         }
+
+
     }
 }
