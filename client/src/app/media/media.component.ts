@@ -13,31 +13,60 @@ export class MediaComponent implements OnInit {
   tvshows: Movie[] = [];
   searchQuery: string = '';
   search: any = {};
-  pageNumber = 1;
+  pageNumberM = 1;
+  pageNumberT = 1;
   itemsPerPage = 6;
-  loadButton: boolean = true;
+  loadMoviesButton: boolean = true;
+  loadTVShowsButton: boolean = true;
 
   constructor(private moviesService: MoviesService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.moviesService.getPagedMovies(this.pageNumber, this.itemsPerPage).subscribe((response) => {
+    
+    this.loadMovies();
+    this.loadTVShows();
+  }
+
+  loadMovies(){
+    this.moviesService.getPagedMovies(this.pageNumberM, this.itemsPerPage).subscribe((response) => {
       this.movies = response;
-      this.pageNumber++;
+      this.pageNumberM++;
     }, error => { console.log(error); });
   }
 
+  loadTVShows(){
+    this.moviesService.getPagedTVShows(this.pageNumberT, this.itemsPerPage).subscribe((response) => {
+      this.tvshows = response;
+      this.pageNumberT++;
+    }, error => { console.log(error); });
+  }
+
+
   loadMoreMovies() {
-    this.moviesService.getPagedMovies(this.pageNumber, this.itemsPerPage).subscribe((response) => {
-      
-      if (response.length === 0) 
-      {
-        this.loadButton = false;
+    this.moviesService.getPagedMovies(this.pageNumberM, this.itemsPerPage).subscribe((response) => {
+
+      if (response.length === 0) {
+        this.loadMoviesButton = false;
         this.toastr.warning(
           'We dont have any more movies', '');
       }
 
       this.movies = this.movies.concat(response);
-      this.pageNumber++;
+      this.pageNumberM++;
+    }, error => { console.log(error); });
+  }
+
+  loadMoreTVShows() {
+    this.moviesService.getPagedTVShows(this.pageNumberT, this.itemsPerPage).subscribe((response) => {
+
+      if (response.length === 0) {
+        this.loadTVShowsButton = false;
+        this.toastr.warning(
+          'We dont have any more TV Shows', '');
+      }
+
+      this.tvshows = this.tvshows.concat(response);
+      this.pageNumberT++;
     }, error => { console.log(error); });
   }
 

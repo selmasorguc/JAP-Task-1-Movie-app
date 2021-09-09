@@ -50,6 +50,20 @@ namespace API.Data
 
         }
 
+         public async Task<IEnumerable<MovieDto>> GetTVShowsPaged(MovieParams movieParams)
+        {
+            var movies = await _context.Movies
+            .Include(m => m.Cast).AsSplitQuery()
+            .Include(m => m.Ratings)
+            .Where(m => m.IsMovie == false)
+            .OrderByDescending(x => x.Ratings.Select(x => x.Value).Average())
+            .Skip((movieParams.PageNumber - 1) * movieParams.PageSize)
+            .Take(movieParams.PageSize)
+            .ToListAsync();
+            var moviesDto = _mapper.Map<IEnumerable<MovieDto>>(movies);
+            return moviesDto;
+        }
+
 
         public async Task<MovieDto> GetMovieByIdAsync(int id)
         {

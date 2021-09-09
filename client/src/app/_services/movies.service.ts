@@ -23,11 +23,20 @@ export class MoviesService {
       params = params.append('pageNumber', page.toString());
       params = params.append('pageSize', itemsPerPage.toString());
     }
-    return this.http.get<Movie[]>(this.baseUrl + "movies/paged", {params: params});
+    return this.http.get<Movie[]>(this.baseUrl + "movies/paged", { params: params });
   }
 
   getTVShows() {
     return this.http.get<Movie[]>(this.baseUrl + "tvshows");
+  }
+
+  getPagedTVShows(page: number, itemsPerPage: number) {
+    let params = new HttpParams();
+    if (page !== null && itemsPerPage !== null) {
+      params = params.append('pageNumber', page.toString());
+      params = params.append('pageSize', itemsPerPage.toString());
+    }
+    return this.http.get<Movie[]>(this.baseUrl + "movies/tvshows/paged", { params: params });
   }
 
   addRating(rating: Rating) {

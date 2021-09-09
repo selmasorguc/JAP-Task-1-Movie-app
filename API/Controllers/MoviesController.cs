@@ -61,6 +61,13 @@ namespace API.Controllers
             return Ok(movies);
         }
 
+        [HttpGet("tvshows/paged")]
+        public async Task<ActionResult<IEnumerable<MovieDto>>> GetTVShowsPaged([FromQuery] MovieParams movieParams)
+        {
+            var tvshows = await _movieRepository.GetTVShowsPaged(movieParams);
+            return Ok(tvshows);
+        }
+
 
 
     }
