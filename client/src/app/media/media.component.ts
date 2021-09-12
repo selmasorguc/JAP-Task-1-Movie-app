@@ -1,46 +1,52 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Movie } from '../_models/movie';
 import { MoviesService } from '../_services/movies.service';
+import { SearchService } from '../_services/search.service';
 
 @Component({
   selector: 'app-media',
   templateUrl: './media.component.html',
   styleUrls: ['./media.component.css']
 })
+
 export class MediaComponent implements OnInit {
   movies: Movie[] = [];
   tvshows: Movie[] = [];
-  searchQuery: string = '';
-  search: any = {};
+  //Pagination
   pageNumberM = 1;
   pageNumberT = 1;
   itemsPerPage = 6;
+  //hiding load more buttons toggle
   loadMoviesButton: boolean = true;
   loadTVShowsButton: boolean = true;
 
-  constructor(private moviesService: MoviesService, private toastr: ToastrService) { }
+  searchActive: boolean = false;
 
+
+  constructor(private moviesService: MoviesService,
+    private searchService: SearchService,
+    private toastr: ToastrService) { }
+  
   ngOnInit(): void {
-    
     this.loadMovies();
     this.loadTVShows();
   }
 
-  loadMovies(){
+  loadMovies() {
     this.moviesService.getPagedMovies(this.pageNumberM, this.itemsPerPage).subscribe((response) => {
       this.movies = response;
       this.pageNumberM++;
     }, error => { console.log(error); });
   }
 
-  loadTVShows(){
+  loadTVShows() {
     this.moviesService.getPagedTVShows(this.pageNumberT, this.itemsPerPage).subscribe((response) => {
       this.tvshows = response;
       this.pageNumberT++;
     }, error => { console.log(error); });
   }
-
 
   loadMoreMovies() {
     this.moviesService.getPagedMovies(this.pageNumberM, this.itemsPerPage).subscribe((response) => {
@@ -68,6 +74,10 @@ export class MediaComponent implements OnInit {
       this.tvshows = this.tvshows.concat(response);
       this.pageNumberT++;
     }, error => { console.log(error); });
+  }
+
+  isSearching(data: any) {
+    this.searchActive = data;
   }
 
 }

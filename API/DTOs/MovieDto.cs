@@ -12,10 +12,11 @@ namespace API.DTOs
         public string Description { get; set; }
         public DateTime ReleaseDate { get; set; }
         public string CoverUrl { get; set; }
-        public float AverageRating { get; set; }
         public bool IsMovie { get; set; }
         public IEnumerable<ActorDto> Cast { get; set; }
         public IEnumerable<Rating> Ratings { get; set; }
-      
+        public double AverageRating { get; set; }
+
+
     }
 }

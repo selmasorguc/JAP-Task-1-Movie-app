@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210906125328_DTOAdd")]
-    partial class DTOAdd
+    [Migration("20210912090701_AvgRatingSet")]
+    partial class AvgRatingSet
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -38,7 +38,7 @@ namespace API.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<float>("AverageRating")
+                    b.Property<double>("AverageRating")
                         .HasColumnType("REAL");
 
                     b.Property<string>("CoverUrl")
@@ -70,7 +70,7 @@ namespace API.Data.Migrations
                     b.Property<int>("MovieId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<float>("Value")
+                    b.Property<double>("Value")
                         .HasColumnType("REAL");
 
                     b.HasKey("Id");

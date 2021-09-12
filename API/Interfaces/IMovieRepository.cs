@@ -14,8 +14,8 @@ namespace API.Interfaces
 
         Task<MovieDto> GetMovieByIdAsync(int id);
         Task<IEnumerable<MovieDto>> GetTVShowsAsync();
-        Task<float> RateMovieAsync(Rating rating);
-        Task<IEnumerable<MovieDto>> SearchMoviesAsync(string query);
+        Task<double> RateMovieAsync(Rating rating);
+        Task<IEnumerable<MovieDto>> SearchMediaAsync(string query);
         Task<IEnumerable<MovieDto>> GetPaged(MovieParams movieParams);
         Task<IEnumerable<MovieDto>> GetTVShowsPaged(MovieParams movieParams);
 

@@ -36,7 +36,7 @@ namespace API.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<float>("AverageRating")
+                    b.Property<double>("AverageRating")
                         .HasColumnType("REAL");
 
                     b.Property<string>("CoverUrl")
@@ -68,7 +68,7 @@ namespace API.Data.Migrations
                     b.Property<int>("MovieId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<float>("Value")
+                    b.Property<double>("Value")
                         .HasColumnType("REAL");
 
                     b.HasKey("Id");

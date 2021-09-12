@@ -20,7 +20,6 @@ namespace API.Data
                 context.Add(movie);
             }
 
-
             await context.SaveChangesAsync();
         }
     }

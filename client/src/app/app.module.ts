@@ -11,6 +11,10 @@ import { TvShowsComponent } from './tv-shows/tv-shows.component';
 import { SharedModule } from './_modules/shared.module';
 import { MediaComponent } from './media/media.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { SearchListComponent } from './search-list/search-list.component';
+import { NotFoundComponent } from './errors/not-found/not-found.component';
+import { RatingModule } from 'ngx-bootstrap/rating';
+import { ServerErrorComponent } from './errors/server-error/server-error.component';
 
 
 @NgModule({
@@ -20,14 +24,18 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     MoviesComponent,
     MovieCardComponent,
     TvShowsComponent,
-    MediaComponent
+    MediaComponent,
+    SearchListComponent,
+    NotFoundComponent,
+    ServerErrorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     SharedModule,
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    RatingModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

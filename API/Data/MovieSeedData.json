@@ -75,7 +75,33 @@
         ]
     },
     {
-        "Title": "The Dark Knight",
+        "Title": "Batman: The Dark Knight",
+        "ReleaseDate": "2008-02-12",
+        "Description": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+        "CoverUrl": "https://res.cloudinary.com/selmasorguc/image/upload/v1631005694/movie%20app/The_Dark_Knight_uamytn.jpg",
+        "Ratings": [
+            {
+                "Value": 4.7
+            },
+            {
+                "Value": 5.0
+            }
+        ],
+        "IsMovie": true,
+        "Cast": [
+            {
+                "Name": "Christian Bale"
+            },
+            {
+                "Name": "Heath Ledger"
+            },
+            {
+                "Name": "Aaron Eckhar"
+            }
+        ]
+    },
+    {
+        "Title": "Batman Begins",
         "ReleaseDate": "2008-02-12",
         "Description": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
         "CoverUrl": "https://res.cloudinary.com/selmasorguc/image/upload/v1631005694/movie%20app/The_Dark_Knight_uamytn.jpg",

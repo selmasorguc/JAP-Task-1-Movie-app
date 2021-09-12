@@ -18,7 +18,7 @@ namespace API.Controllers
         }
 
         [HttpPost("add")]
-        public async Task<ActionResult<float>> AddRating(Rating rating)
+        public async Task<ActionResult<double>> AddRating(Rating rating)
         {
             return await _movieRepository.RateMovieAsync(rating);
             

@@ -2,7 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Movie } from '../_models/movie';
 import { Rating } from '../_models/rating';
 import { MoviesService } from '../_services/movies.service';
-import {  ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-movie-card',
@@ -15,7 +16,8 @@ export class MovieCardComponent implements OnInit {
   max = 5;
   isReadonly = false;
 
-  constructor(private moviesService: MoviesService, private toastr: ToastrService) {
+  constructor(private moviesService: MoviesService, private toastr: ToastrService,
+    private spinner: NgxSpinnerService) {
   }
 
   getRating($event: any) {
@@ -29,14 +31,22 @@ export class MovieCardComponent implements OnInit {
         this.toastr.success(
           'Thank you for leaving a rating', '',
           {
-            positionClass: 'toast-top-center',
+            positionClass: 'toast-bottom-center',
             tapToDismiss: true,
             closeButton: true
           });
+        
+        this.spinner.show();
+
+        setTimeout(() => {
+          this.spinner.hide();
+          location.reload();
+        }, 1300);
       }
     );
 
   }
+
 
   ngOnInit(): void {
   }

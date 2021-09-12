@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using API.DTOs;
 using API.Entity;
@@ -50,7 +52,7 @@ namespace API.Data
 
         }
 
-         public async Task<IEnumerable<MovieDto>> GetTVShowsPaged(MovieParams movieParams)
+        public async Task<IEnumerable<MovieDto>> GetTVShowsPaged(MovieParams movieParams)
         {
             var movies = await _context.Movies
             .Include(m => m.Cast).AsSplitQuery()
@@ -87,11 +89,11 @@ namespace API.Data
             return tvshowsDto;
         }
 
-        public async Task<float> RateMovieAsync(Rating rating)
+        public async Task<double> RateMovieAsync(Rating rating)
         {
             var movie = await _context.Movies
             .Include(m => m.Ratings).FirstOrDefaultAsync(m => m.Id == rating.MovieId);
-            if (movie == null) return 2.3413345f;
+            if (movie == null) return 0;
             _context.Ratings.Add(rating);
             _context.Entry(movie).State = EntityState.Modified;
             await _context.SaveChangesAsync();
@@ -103,14 +105,87 @@ namespace API.Data
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public async Task<IEnumerable<MovieDto>> SearchMoviesAsync(string query)
+        public async Task<IEnumerable<MovieDto>> SearchMediaAsync(string query)
         {
             var movies = await _context.Movies
             .Include(m => m.Cast).AsSplitQuery()
             .Include(m => m.Ratings)
-            .Where(m => m.Title.ToLower().Contains(query.ToLower()))
+            .Where(m => m.Title.ToLower().Contains(query.ToLower()) ||
+            m.Description.ToLower().Contains(query.ToLower()))
             .OrderByDescending(x => x.Ratings.Select(x => x.Value).Average())
             .ToListAsync();
+
+            //Keywords check
+            int numericValue;
+            bool isNumber = int.TryParse(Regex.Match(query, @"\d+").Value, out numericValue);
+
+            if (query.ToLower().Contains("star") && isNumber && numericValue.ToString().Length == 1)
+            {
+                if (query.ToLower().Contains("at least"))
+                {
+                    movies.AddRange(await _context.Movies
+                        .Include(m => m.Cast).AsSplitQuery()
+                        .Include(m => m.Ratings)
+                        .Where(m => m.Ratings.Average(x => x.Value) >= numericValue)
+                        .OrderByDescending(x => x.Ratings.Select(x => x.Value).Average())
+                        .ToListAsync());
+                }
+                else
+                {
+                    movies.AddRange(await _context.Movies
+                    .Include(m => m.Cast).AsSplitQuery()
+                    .Include(m => m.Ratings)
+                    .Where(m => m.Ratings.Average(x => x.Value) == numericValue)
+                    .OrderByDescending(x => x.Ratings.Select(x => x.Value).Average())
+                    .ToListAsync());
+                }
+            }
+
+            if (query.ToLower().Contains("year") && isNumber && numericValue.ToString().Length == 1)
+            {
+                if (query.ToLower().Contains("older"))
+                {
+                    movies.AddRange(await _context.Movies
+                        .Include(m => m.Cast).AsSplitQuery()
+                        .Include(m => m.Ratings)
+                        .Where(m => DateTime.Now.Year - m.ReleaseDate.Year >= numericValue)
+                        .OrderByDescending(x => x.Ratings.Select(x => x.Value).Average())
+                        .ToListAsync());
+                }
+                else
+                {
+                    movies.AddRange(await _context.Movies
+                        .Include(m => m.Cast).AsSplitQuery()
+                        .Include(m => m.Ratings)
+                        .Where(m => DateTime.Now.Year - m.ReleaseDate.Year <= numericValue)
+                        .OrderByDescending(x => x.Ratings.Select(x => x.Value).Average())
+                        .ToListAsync());
+                }
+            }
+
+            if (isNumber && numericValue.ToString().Length == 4)
+            {
+                if (query.ToLower().Contains("after"))
+                {
+                    movies.AddRange(await _context.Movies
+                        .Include(m => m.Cast).AsSplitQuery()
+                        .Include(m => m.Ratings)
+                        .Where(m => m.ReleaseDate.Year > numericValue)
+                        .OrderByDescending(x => x.Ratings.Select(x => x.Value).Average())
+                        .ToListAsync());
+                }
+                else
+                {
+                   movies.AddRange(await _context.Movies
+                        .Include(m => m.Cast).AsSplitQuery()
+                        .Include(m => m.Ratings)
+                        .Where(m => m.ReleaseDate.Year == numericValue)
+                        .OrderByDescending(x => x.Ratings.Select(x => x.Value).Average())
+                        .ToListAsync());
+                }
+            }
+
+
             var moviesDto = _mapper.Map<IEnumerable<MovieDto>>(movies).ToList();
             return moviesDto;
         }

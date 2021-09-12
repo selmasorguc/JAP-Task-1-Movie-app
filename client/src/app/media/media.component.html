@@ -1,14 +1,8 @@
-<!-- Search button -->
-<div class="container mt-3">
-    <form class="d-flex">
-        <input class="form-control me-sm-2" type="text" placeholder="Look for movies and tv shows">
-        <button class="btn btn-dark my-2 my-sm-0" type="submit">Search</button>
-    </form>
-</div>
 
+<app-search-list (searchActive) = "isSearching($event)"></app-search-list>
 <!-- Tabs -->
-<div class="container mt-5 tabset-container mb-5">
-    <tabset class="media-tabset">
+<div class="container mt-5 mb-5" *ngIf="!searchActive">
+    <tabset type="pills" [justified]="true">
         <!-- Movie Tab -->
         <tab heading="Movies" id="tab1">
             <div class="container">
@@ -20,9 +14,8 @@
             </div>
             <div class="container">
                 <div class="col-md-12 text-center mb-4">
-                    <button type="button" class="btn btn-outline-light mb-5" *ngIf="loadMoreTVShows" type="button"
+                    <button type="button" class="btn btn-outline-light mb-5" *ngIf="loadMoviesButton" type="button"
                         (click)="loadMoreMovies()">Load More</button>
-
                 </div>
             </div>
         </tab>
@@ -37,7 +30,7 @@
             </div>
             <div class="container">
                 <div class="col-md-12 text-center mb-4">
-                    <button type="button" class="btn btn-outline-light mb-5" *ngIf="loadMoreTVShows" type="button"
+                    <button type="button" class="btn btn-outline-light mb-5" *ngIf="loadTVShowsButton" type="button"
                         (click)="loadMoreTVShows()">Load More</button>
                 </div>
             </div>

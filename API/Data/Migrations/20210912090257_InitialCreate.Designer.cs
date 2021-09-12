@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210905201841_TvShowEntityAdd")]
-    partial class TvShowEntityAdd
+    [Migration("20210912090257_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,20 +24,10 @@ namespace API.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("MovieId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("TVShowId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("MovieId");
-
-                    b.HasIndex("TVShowId");
 
                     b.ToTable("Actors");
                 });
@@ -48,14 +38,18 @@ namespace API.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<double>("AverageRating")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("REAL");
+
                     b.Property<string>("CoverUrl")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
-                    b.Property<float>("Rating")
-                        .HasColumnType("REAL");
+                    b.Property<bool>("IsMovie")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("ReleaseDate")
                         .HasColumnType("TEXT");
@@ -68,54 +62,67 @@ namespace API.Data.Migrations
                     b.ToTable("Movies");
                 });
 
-            modelBuilder.Entity("API.Entity.TVShow", b =>
+            modelBuilder.Entity("API.Entity.Rating", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("CoverUrl")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("TEXT");
-
-                    b.Property<float>("Rating")
-                        .HasColumnType("REAL");
-
-                    b.Property<DateTime>("ReleaseDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("SeasonNumber")
+                    b.Property<int>("MovieId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Title")
-                        .HasColumnType("TEXT");
+                    b.Property<double>("Value")
+                        .HasColumnType("REAL");
 
                     b.HasKey("Id");
 
-                    b.ToTable("TVShows");
+                    b.HasIndex("MovieId");
+
+                    b.ToTable("Ratings");
                 });
 
-            modelBuilder.Entity("API.Entity.Actor", b =>
+            modelBuilder.Entity("ActorMovie", b =>
+                {
+                    b.Property<int>("CastId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("MoviesId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("CastId", "MoviesId");
+
+                    b.HasIndex("MoviesId");
+
+                    b.ToTable("ActorMovie");
+                });
+
+            modelBuilder.Entity("API.Entity.Rating", b =>
                 {
                     b.HasOne("API.Entity.Movie", null)
-                        .WithMany("Cast")
-                        .HasForeignKey("MovieId");
+                        .WithMany("Ratings")
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
 
-                    b.HasOne("API.Entity.TVShow", null)
-                        .WithMany("Cast")
-                        .HasForeignKey("TVShowId");
+            modelBuilder.Entity("ActorMovie", b =>
+                {
+                    b.HasOne("API.Entity.Actor", null)
+                        .WithMany()
+                        .HasForeignKey("CastId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("API.Entity.Movie", null)
+                        .WithMany()
+                        .HasForeignKey("MoviesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("API.Entity.Movie", b =>
                 {
-                    b.Navigation("Cast");
-                });
-
-            modelBuilder.Entity("API.Entity.TVShow", b =>
-                {
-                    b.Navigation("Cast");
+                    b.Navigation("Ratings");
                 });
 #pragma warning restore 612, 618
         }

@@ -27,6 +27,13 @@
   width: 50%;
 }
 
+li:not(:first-child)::before {
+  content: '|';
+  color: #398984;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
 #container .product-details h1 {
   position: relative;
   font-size: 30px;

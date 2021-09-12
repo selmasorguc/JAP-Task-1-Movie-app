@@ -9,8 +9,7 @@ namespace API.Helpers
     {
         public AutoMapperProfiles()
         {
-            CreateMap<Movie, MovieDto>()
-            .ForMember(dest => dest.AverageRating, opt => opt.MapFrom(src => src.Ratings.CalculateAverageRating()));
+            CreateMap<Movie, MovieDto>();
             CreateMap<Actor, ActorDto>();
             CreateMap<Rating, RatingDto>();
         }
