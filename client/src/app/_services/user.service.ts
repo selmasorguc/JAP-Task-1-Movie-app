@@ -14,9 +14,28 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  login(user: User) {
-    return this.http.post(this.baseUrl + 'user/login', user);
-  
+  login(model: any) {
+    return this.http.post(this.baseUrl + 'user/login', model).pipe(
+      map((response: User) => { 
+        const user = response;
+        if (user){
+          localStorage.setItem('user', JSON.stringify(user));
+          this.currentUserSource.next(user);
+        }
+      })
+    );
   }
 
+  setCurrentUser(user: User){
+    this.currentUserSource.next(user);
+  }
+
+  getCurrentUser(){
+    return localStorage.getItem('user');
+  }
+
+  logout(){
+    localStorage.removeItem('user');
+    this.currentUserSource.next(null);
+  }
 }

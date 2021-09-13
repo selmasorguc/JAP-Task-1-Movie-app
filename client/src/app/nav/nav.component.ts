@@ -9,8 +9,9 @@ import { UserService } from '../_services/user.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  user: User = { username: '', password:''};
+  model: any = {};
   isLoggedIn = false;
+  user: User;
 
   constructor(private userService: UserService, private toastr: ToastrService) { }
 
@@ -19,9 +20,10 @@ export class NavComponent implements OnInit {
   }
 
   login() {
-    this.userService.login(this.user).subscribe(response => {
+    this.userService.login(this.model).subscribe(response => {
       this.isLoggedIn = true;
-      this.toastr.success("Hello");
+      this.user = JSON.parse(this.userService.getCurrentUser());
+      this.toastr.success("Hello there, " + this.user.username + "!");
     })
   }
 
