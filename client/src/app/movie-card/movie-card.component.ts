@@ -20,6 +20,11 @@ export class MovieCardComponent implements OnInit {
     private spinner: NgxSpinnerService) {
   }
 
+  
+  ngOnInit(): void {
+    this.rate = this.movie.averageRating;
+  }
+
   getRating($event: any) {
     var newRating: Rating = { value: this.rate, movieId: this.movie.id };
     this.movie.ratings.push(newRating);
@@ -45,10 +50,6 @@ export class MovieCardComponent implements OnInit {
       }
     );
 
-  }
-
-
-  ngOnInit(): void {
   }
 
 }
