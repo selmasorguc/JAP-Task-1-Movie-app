@@ -37,7 +37,7 @@ Doing this should result in database creation that is going to be seeded by data
 4. In other Terminal window navigate to client folder and run
 ng serve
 
-5. Try out the JAP Task 1 Movie App
+5. Try out the JAP Task 1 Movie App on https://localhost:4200/ 
 
 
 
