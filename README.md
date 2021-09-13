@@ -40,4 +40,8 @@ ng serve
 5. Try out the JAP Task 1 Movie App on https://localhost:4200/ 
 
 
+Make sure you set up the Token key in appsettings.Development.json
+![Screenshot_5](https://user-images.githubusercontent.com/89447689/133107136-14cc95a1-a3db-4e48-887a-bdbcba9751df.png)
+
+
 
